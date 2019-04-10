@@ -30,7 +30,7 @@ def render_process(processes, order):
     return tabulate.tabulate(
         tabular_data=table,
         headers=[
-            'PID', 'Status', 'R-Memory', 'V-Memory',
+            'PID', 'Status', 'V-Memory', 'R-Memory',
             'CPU%', 'CPU User', 'CPU System',
             'Command'
         ]
