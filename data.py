@@ -24,7 +24,7 @@ def render_process(processes):
     return tabulate.tabulate(
         tabular_data=table,
         headers=[
-            'PID', 'Status', 'V-Memory', 'R-Memory',
+            'PID', 'Status', 'R-Memory', 'V-Memory',
             'CPU%', 'CPU User', 'CPU System',
             'Command'
         ]
