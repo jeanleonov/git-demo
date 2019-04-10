@@ -4,9 +4,10 @@ import data
 
 
 @click.command()
-def show_processes():
+@click.option('--top', default=10, type=int, help='Number of top.')
+def show_processes(top):
     processes = data.list_processes()
-    click.echo(data.render_process(processes))
+    click.echo(data.render_process(processes, top))
 
 
 if __name__ == '__main__':

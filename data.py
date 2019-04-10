@@ -12,7 +12,8 @@ def list_processes():
     ]
 
 
-def render_process(processes):
+def render_process(processes, top):
+    processes.sort(key=lambda process: -process.cpu_times().user - process.cpu_times().system)
     table = [
         [
             p.pid, p.status(), p.memory_info().rss, p.memory_info().vms,
@@ -22,7 +23,7 @@ def render_process(processes):
         for p in processes
     ]
     return tabulate.tabulate(
-        tabular_data=table,
+        tabular_data=table[:top],
         headers=[
             'PID', 'Status', 'V-Memory', 'R-Memory',
             'CPU%', 'CPU User', 'CPU System',
