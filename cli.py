@@ -6,8 +6,7 @@ import data
 @click.command()
 def show_processes():
     processes = data.list_processes()
-    for process in processes:
-        click.echo(process)
+    click.echo(data.render_process(processes))
 
 
 if __name__ == '__main__':
