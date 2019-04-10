@@ -12,7 +12,7 @@ def list_processes():
     ]
 
 
-def render_process(processes, order):
+def render_process(processes, order, top):
     if order == 'memory':
         processes.sort(key=lambda process: -process.memory_info().rss)
     elif order == 'cpu%':
@@ -28,10 +28,11 @@ def render_process(processes, order):
         for p in processes
     ]
     return tabulate.tabulate(
-        tabular_data=table,
+        tabular_data=table[:top],
         headers=[
             'PID', 'Status', 'V-Memory', 'R-Memory',
             'CPU%', 'CPU User', 'CPU System',
             'Command'
         ]
     )
+
